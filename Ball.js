@@ -30,7 +30,7 @@ export class Ball {
     this.gradient.addColorStop(0, "rgba(255,255,255,0.25");
     this.gradient.addColorStop(0.4, "rgba(255,255,255,0");
     this.gradient.addColorStop(0.7, "rgba(0,0,0,0");
-    this.gradient.addColorStop(1, "rgba(0, 0, 0, 0.4");
+    this.gradient.addColorStop(1, "rgba(0, 0, 0, 0.3");
     this.alpha = 1;
   }
 
@@ -39,14 +39,21 @@ export class Ball {
   }
 
   draw() {
-    if (this.inPocket) return;
+    // pocket animation
+    if (this.alpha == 0) return;
+    if (this.inPocket) {
+      this.alpha = Math.max(0, this.alpha - 0.2);
+    }
+
     // prepare drawing
     const shadowFactor = {
       x: ((this.pos.x - canvas.width / 2) / canvas.width) * 0.5,
       y: 0.15,
     };
     ctx.save();
+    ctx.globalAlpha = this.alpha;
     ctx.translate(this.pos.x, this.pos.y);
+
     // draw shadow
     ctx.beginPath();
     ctx.arc(
@@ -59,11 +66,13 @@ export class Ball {
     ctx.fillStyle = "rgba(0,0,0,0.1)";
     ctx.fill();
     ctx.closePath();
+
     // draw regular ball
     ctx.beginPath();
     ctx.arc(0, 0, this.size, 0, 2 * Math.PI);
     ctx.fillStyle = this.color;
     ctx.fill();
+
     // draw light effects
     ctx.fillStyle = this.gradient;
     ctx.fill();
