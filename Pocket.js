@@ -1,29 +1,82 @@
-import { ctx } from "./canvas.js";
+import { tctx } from "./canvas.js";
 import { distance } from "./math.js";
 
-export const pocketSize = 24;
+export const pocketSize = 25;
+export const cornerOffset = 12;
 
 export class Pocket {
-  constructor({ pos }) {
+  constructor({ pos, type, rotation }) {
     this.pos = pos;
+    this.type = type;
+    this.rotation = rotation;
     this.size = pocketSize;
-    this.color = "#000";
-    this.gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
+    this.gradient = tctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
     this.gradient.addColorStop(0.4, "#202020");
     this.gradient.addColorStop(1, "#000");
   }
 
   draw() {
-    ctx.save();
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "#000";
-    ctx.translate(this.pos.x, this.pos.y);
-    ctx.fillStyle = this.gradient;
-    ctx.beginPath();
-    ctx.arc(0, 0, this.size, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.closePath();
-    ctx.restore();
+    tctx.save();
+    tctx.shadowBlur = 10;
+    tctx.shadowColor = "#000";
+    tctx.translate(this.pos.x, this.pos.y);
+    tctx.fillStyle = this.gradient;
+    tctx.beginPath();
+    tctx.arc(0, 0, this.size, 0, 2 * Math.PI);
+    tctx.fill();
+    tctx.closePath();
+    tctx.restore();
+  }
+
+  drawMounting() {
+    tctx.save();
+    const width = 10;
+    tctx.lineWidth = width;
+    tctx.strokeStyle = "	rgb(255,215,0)";
+    tctx.lineCap = "round";
+    tctx.shadowBlur = 10;
+    tctx.shadowColor = "rgba(255,200,0,0.25)";
+    tctx.translate(this.pos.x, this.pos.y);
+    tctx.rotate(this.rotation * (Math.PI / 180));
+
+    if (this.type == "corner") {
+      const overflow = 60;
+      const d = 0.19;
+      tctx.beginPath();
+      tctx.moveTo(
+        -width / 2 - cornerOffset,
+        this.size + overflow - cornerOffset
+      );
+      tctx.arc(
+        0,
+        0,
+        this.size + width / 2,
+        (0.5 + d) * Math.PI,
+        (2 - d) * Math.PI
+      );
+      tctx.lineTo(
+        this.size + overflow - cornerOffset,
+        -width / 2 - cornerOffset
+      );
+      tctx.stroke();
+      tctx.closePath();
+    } else if (this.type == "edge") {
+      const d = 0.06;
+      const overflow = 50;
+      tctx.beginPath();
+      tctx.moveTo(-this.size - overflow, -width / 2);
+      tctx.arc(
+        0,
+        0,
+        this.size + width / 2,
+        (1 + d) * Math.PI,
+        (2 - d) * Math.PI
+      );
+      tctx.lineTo(this.size + overflow, -width / 2);
+      tctx.stroke();
+      tctx.closePath();
+    }
+    tctx.restore();
   }
 
   includes(ball) {

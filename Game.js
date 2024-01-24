@@ -24,12 +24,16 @@ export class Game {
   }
 
   draw() {
-    drawCloth();
-    drawWood();
-    this.pockets.forEach((p) => p.draw());
-    this.bumpers.forEach((b) => b.draw());
     this.balls.forEach((b) => b.draw());
     this.controller.draw();
+  }
+
+  drawTable() {
+    drawCloth();
+    drawWood();
+    this.bumpers.forEach((b) => b.draw());
+    this.pockets.forEach((p) => p.draw());
+    this.pockets.forEach((p) => p.drawMounting());
   }
 
   update() {
