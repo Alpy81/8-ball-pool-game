@@ -46,6 +46,7 @@ export class Game {
       if (this.blackBall.inPocket) {
         this.finish();
       } else if (this.whiteBall.inPocket) {
+        SOUND.WHIP.play();
         this.whiteBall.reset(this);
       }
     }
@@ -58,13 +59,16 @@ export class Game {
       !this.whiteBall.inPocket &&
       this.balls.every((ball) => ball == this.whiteBall || ball.inPocket);
     if (this.won) {
+      SOUND.WIN.play();
       openDialog("You won!");
     } else {
+      SOUND.LOSE.play();
       openDialog("You lost!");
     }
   }
 
   restart() {
+    SOUND.WHIP.play();
     closeDialog();
     this.balls.forEach((b) => b.reset(this));
     this.won = null;

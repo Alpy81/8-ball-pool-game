@@ -1,4 +1,5 @@
 import { ctx, margin, canvas } from "./canvas.js";
+import { SOUND } from "./sound.js";
 import {
   add,
   sub,
@@ -140,6 +141,8 @@ export class Ball {
       const w = scale((1 / Math.pow(dist, 2)) * dotProduct(x_d, v_d), x_d);
       this.vel = sub(this.vel, w);
       ball.vel = add(ball.vel, w);
+      // play sound
+      SOUND.COLLISION.play();
     });
   }
 
@@ -147,6 +150,7 @@ export class Ball {
     pockets.forEach((pocket) => {
       if (pocket.includes(this)) {
         this.inPocket = true;
+        SOUND.POCKET.play();
         return;
       }
     });
@@ -183,6 +187,8 @@ export class Ball {
         const vector = sub(b, a);
         const angle = angleBetween(this.vel, vector);
         this.vel = rotate(2 * angle, this.vel);
+        // play sound
+        SOUND.BUMPER.play();
       }
     });
   }

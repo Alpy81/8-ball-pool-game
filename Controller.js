@@ -17,6 +17,9 @@ export class Controller {
       this.active = false;
       const factor = 0.15;
       this.ball.vel = scale(factor, this.vector);
+      const volume = 1;
+      SOUND.CUE.volume = volume;
+      SOUND.CUE.play();
     });
   }
 
