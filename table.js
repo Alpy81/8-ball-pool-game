@@ -8,8 +8,8 @@ export function drawCloth() {
 export function drawWood() {
   let gradient;
   function setupGradient() {
-    gradient.addColorStop(0, "hsl(0, 0%, 5%)");
-    gradient.addColorStop(1, "hsl(20, 25%, 70%)");
+    gradient.addColorStop(0, "hsl(0, 0%, 15%)");
+    gradient.addColorStop(1, "hsl(20, 25%, 90%)");
     tctx.fillStyle = gradient;
   }
 

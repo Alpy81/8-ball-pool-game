@@ -2,7 +2,7 @@ import { Ball } from "./Ball.js";
 import { canvas, margin } from "./canvas.js";
 
 export const COLORS = {
-  WHITE: "rgb(210,210,211)",
+  WHITE: "rgb(210,210,311)",
   BLACK: "rgba(0,0,0)",
   YELLOW: "rgb(255,215,0)",
   ORANGE: "rgb(255, 120, 0)",
@@ -12,7 +12,7 @@ export const COLORS = {
   BROWN: "rgb(150,20,0)",
   GREEN: "rgb(0,238,118)",
   MAGENTA: "rgb(255,0,255)",
-  PEACHPUFF: "rgb(255,218,185)",
+  PEACHPUFF: "rgb(255,118,150)",
   LIGHTPINK: "rgb(205,140,149)",
   MEDIUMPURPLE: "rgb(171,130,255)",
   TURQUOISE: "rgb(64,224,208)",

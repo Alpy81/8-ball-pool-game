@@ -1,6 +1,7 @@
 import { Controller } from "./Controller.js";
 import { openDialog, closeDialog } from "./dialog.js";
 import { COLORS } from "./setupBalls.js";
+import { SOUND } from "./sound.js";
 import { drawCloth, drawWood } from "./table.js";
 
 export class Game {

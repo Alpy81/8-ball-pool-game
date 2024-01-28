@@ -8,6 +8,7 @@ import {
   distance,
   angleBetween,
   rotate,
+  norm,
 } from "./math.js";
 
 export class Ball {
@@ -29,8 +30,8 @@ export class Ball {
       this.size
     );
     this.gradient.addColorStop(0, "rgba(255,255,255,0.25");
-    this.gradient.addColorStop(0.4, "rgba(255,255,255,0");
-    this.gradient.addColorStop(0.7, "rgba(0,0,0,0");
+    this.gradient.addColorStop(0.3, "rgba(255,255,255,0");
+    this.gradient.addColorStop(0.9, "rgba(0,0,0,0");
     this.gradient.addColorStop(1, "rgba(0, 0, 0, 0.3");
     this.alpha = 1;
   }
@@ -64,7 +65,7 @@ export class Ball {
       0,
       2 * Math.PI
     );
-    ctx.fillStyle = "rgba(0,0,0,0.1)";
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
     ctx.fill();
     ctx.closePath();
 
@@ -88,13 +89,13 @@ export class Ball {
     this.vel.y *= this.friction;
     this.handleTinyVelocities();
     if (this.inPocket) return;
-    this.bounceOfWalls();
+    this.bounceOffWalls();
     this.bounceOfBumpers(game.bumpers);
     this.checkPockets(game.pockets);
     this.collideWithBalls(game.balls);
   }
 
-  bounceOfWalls() {
+  bounceOffWalls() {
     // horizontal
     if (this.pos.x + this.size >= canvas.width - margin) {
       this.pos.x = canvas.width - margin - this.size;
@@ -142,6 +143,8 @@ export class Ball {
       this.vel = sub(this.vel, w);
       ball.vel = add(ball.vel, w);
       // play sound
+      const volume = Math.min(1, (norm(this.vel) + norm(ball.vel)) / 15);
+      SOUND.COLLISION.volume = volume;
       SOUND.COLLISION.play();
     });
   }
@@ -188,6 +191,8 @@ export class Ball {
         const angle = angleBetween(this.vel, vector);
         this.vel = rotate(2 * angle, this.vel);
         // play sound
+        const volume = Math.min(1, norm(this.vel) / 30);
+        SOUND.BUMPER.volume = volume;
         SOUND.BUMPER.play();
       }
     });
