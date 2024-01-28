@@ -1,4 +1,4 @@
-import { norm } from "./math.js";
+import { norm } from "../src/math.js";
 
 /** @type {HTMLCanvasElement} */
 export const canvas = document.getElementById("canvas");
@@ -17,4 +17,4 @@ export function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-export const canvasNorm = norm({x: canvas.width, y: canvas.height});
+export const canvasNorm = norm({ x: canvas.width, y: canvas.height });

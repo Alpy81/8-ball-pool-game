@@ -1,6 +1,6 @@
-import { clearCanvas } from "./canvas.js";
-import { openDialog } from "./dialog.js";
-import { game } from "./setupGame.js";
+import { clearCanvas } from "../src/canvas.js";
+import { openDialog } from "../src/dialog.js";
+import { game } from "../src/setupGame.js";
 
 game.drawTable();
 

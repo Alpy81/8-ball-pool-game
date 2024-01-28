@@ -1,5 +1,5 @@
-import { tctx } from "./canvas.js";
-import { Polygon } from "./Polygon.js";
+import { tctx } from "../src/canvas.js";
+import { Polygon } from "../src/Polygon.js";
 
 export class Bumper extends Polygon {
   constructor({ coords, shadow }) {

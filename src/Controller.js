@@ -1,7 +1,7 @@
-import { canvasNorm, ctx } from "./canvas.js";
-import { scale, sub, normalize, limit, norm } from "./math.js";
-import { mouse } from "./mouse.js";
-import { SOUND } from "./sound.js";
+import { canvasNorm, ctx } from "../src/canvas.js";
+import { scale, sub, normalize, limit, norm } from "../src/math.js";
+import { mouse } from "../src/mouse.js";
+import { SOUND } from "../src/sound.js";
 
 export class Controller {
   constructor(ball) {

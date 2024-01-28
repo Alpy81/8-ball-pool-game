@@ -1,5 +1,5 @@
-import { Ball } from "./Ball.js";
-import { canvas, margin } from "./canvas.js";
+import { Ball } from "../src/Ball.js";
+import { canvas, margin } from "../src/canvas.js";
 
 export const COLORS = {
   WHITE: "rgb(210,210,311)",

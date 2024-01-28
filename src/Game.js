@@ -1,8 +1,8 @@
-import { Controller } from "./Controller.js";
-import { openDialog, closeDialog } from "./dialog.js";
-import { COLORS } from "./setupBalls.js";
-import { SOUND } from "./sound.js";
-import { drawCloth, drawWood } from "./table.js";
+import { Controller } from "../src/Controller.js";
+import { openDialog, closeDialog } from "../src/dialog.js";
+import { COLORS } from "../src/setupBalls.js";
+import { SOUND } from "../src/sound.js";
+import { drawCloth, drawWood } from "../src/table.js";
 
 export class Game {
   constructor({ balls, pockets, bumpers }) {

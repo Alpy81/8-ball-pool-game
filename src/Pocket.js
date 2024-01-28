@@ -1,5 +1,5 @@
-import { tctx } from "./canvas.js";
-import { distance } from "./math.js";
+import { tctx } from "../src/canvas.js";
+import { distance } from "../src/math.js";
 
 export const pocketSize = 25;
 export const cornerOffset = 12;

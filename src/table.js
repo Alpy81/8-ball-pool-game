@@ -1,4 +1,4 @@
-import { tctx, canvas, margin } from "./canvas.js";
+import { tctx, canvas, margin } from "../src/canvas.js";
 
 export function drawCloth() {
   tctx.fillStyle = "rgb(26,130,30)";

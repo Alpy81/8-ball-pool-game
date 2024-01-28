@@ -1,5 +1,5 @@
-import { ctx, margin, canvas } from "./canvas.js";
-import { SOUND } from "./sound.js";
+import { ctx, margin, canvas } from "../src/canvas.js";
+import { SOUND } from "../src/sound.js";
 import {
   add,
   sub,
@@ -9,7 +9,7 @@ import {
   angleBetween,
   rotate,
   norm,
-} from "./math.js";
+} from "../src/math.js";
 
 export class Ball {
   constructor({ pos, color, vel }) {

@@ -1,6 +1,6 @@
-import { Bumper } from "./Bumper.js";
-import { canvas, margin } from "./canvas.js";
-import { pocketSize } from "./Pocket.js";
+import { Bumper } from "../src/Bumper.js";
+import { canvas, margin } from "../src/canvas.js";
+import { pocketSize } from "../src/Pocket.js";
 
 export function getBumpers() {
   const width = 20;

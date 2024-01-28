@@ -1,5 +1,5 @@
-import { tctx } from "./canvas.js";
-import { segmentIntersectsCircle } from "./math.js";
+import { tctx } from "../src/canvas.js";
+import { segmentIntersectsCircle } from "../src/math.js";
 
 export class Polygon {
   constructor({ coords }) {

@@ -1,5 +1,5 @@
-import { canvas, margin } from "./canvas.js";
-import { Pocket, cornerOffset } from "./Pocket.js";
+import { canvas, margin } from "../src/canvas.js";
+import { Pocket, cornerOffset } from "../src/Pocket.js";
 
 export function getPockets() {
   return [

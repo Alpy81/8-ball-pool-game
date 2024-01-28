@@ -1,4 +1,4 @@
-import { canvas } from "./canvas.js";
+import { canvas } from "../src/canvas.js";
 
 export const mouse = {
   x: 0,
